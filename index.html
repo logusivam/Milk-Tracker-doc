@@ -1,29 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
-  <title>Milk Tracker – Focumentation</title>
+  <title>Milk Tracker – Documentation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="./assets/images/icon-v2.png" type="image/x-icon">
+
+  <!-- Ignore Tailwind CDN warning -->
+  <script>
+    const originalWarn = console.warn;
+    console.warn = function (...args) {
+      if (
+        typeof args[0] === "string" &&
+        args[0].includes("cdn.tailwindcss.com")
+      ) {
+        return;
+      }
+      originalWarn.apply(console, args);
+    };
+  </script>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Optional: Tailwind config for custom colors -->
+  <!-- Tailwind Config -->
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            milk: "#f8fafc",
-            primary: "#2563eb",
+            surface: "#0f172a",
+            card: "#1e293b",
             accent: "#22c55e",
+            muted: "#94a3b8",
           }
         }
       }
     }
   </script>
 
-  <!-- Simple animation styles -->
+  <!-- Animation -->
   <style>
     .fade-in {
       animation: fadeIn 0.8s ease-in-out forwards;
@@ -35,150 +52,188 @@
   </style>
 </head>
 
-<body class="bg-milk text-gray-800">
+<body class="bg-surface text-gray-200">
 
   <!-- Header -->
-  <header class="bg-white shadow sticky top-0 z-50">
+  <header class="bg-card shadow sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-primary">🥛 Milk Tracker</h1>
-      <nav class="space-x-6 text-sm font-medium">
-        <a href="#features" class="hover:text-primary">Features</a>
-        <a href="#dashboard" class="hover:text-primary">Dashboard</a>
-        <a href="#ui" class="hover:text-primary">UI Highlights</a>
+
+      <!-- Logo + Title -->
+      <div class="flex items-center gap-3">
+        <img
+          src="./assets/images/icon-v2.png"
+          alt="Milk Tracker Logo"
+          class="h-8 w-8 object-contain"
+        />
+
+        <h1 class="text-2xl font-bold text-gray-100">
+          Milk Tracker
+        </h1>
+      </div>
+
+      <!-- Nav -->
+      <nav class="space-x-6 text-sm font-medium text-muted">
+        <a href="#features" class="hover:text-accent transition">Features</a>
+        <a href="#dashboard" class="hover:text-accent transition">Dashboard</a>
+        <a href="#ui" class="hover:text-accent transition">UI Highlights</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="max-w-7xl mx-auto px-6 py-20 text-center fade-in">
-    <h2 class="text-4xl font-extrabold mb-6">
-      Track Daily Milk Consumption <span class="text-primary">Effortlessly</span>
+    <h2 class="text-4xl font-extrabold mb-6 text-gray-100">
+      Track Daily Milk Consumption
+      <span class="text-accent">Effortlessly</span>
     </h2>
-    <p class="text-gray-600 max-w-2xl mx-auto text-lg">
-      Milk Tracker provides a clean, intuitive, and responsive interface to record,
-      view, and analyze daily milk usage and costs with clarity and ease.
+    <p class="text-muted max-w-2xl mx-auto text-lg">
+      A clean, intuitive, and responsive interface designed to record,
+      view, and analyze daily milk usage with clarity and comfort.
     </p>
   </section>
 
-  <!-- Features Section -->
+  <!-- Features -->
   <section id="features" class="max-w-7xl mx-auto px-6 py-16">
-    <h3 class="text-3xl font-bold mb-12 text-center">Frontend Features</h3>
+    <h3 class="text-3xl font-bold mb-12 text-center text-gray-100">
+      Features
+    </h3>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Feature Card -->
-      <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition fade-in">
-        <h4 class="text-xl font-semibold mb-3">Daily Milk Entry Interface</h4>
-        <p class="text-gray-600">
-          Simple and user-friendly form to input daily milk quantity with clear labels,
-          validation feedback, and smooth interactions.
+      <!-- Card -->
+      <div class="bg-card rounded-xl shadow p-6 hover:shadow-xl transition fade-in">
+        <h4 class="text-xl font-semibold mb-3 text-gray-100">
+          Daily Milk Entry Interface
+        </h4>
+        <p class="text-muted">
+          Clean, focused input experience with clear labels, validations,
+          and smooth interaction feedback.
         </p>
       </div>
 
-      <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition fade-in">
-        <h4 class="text-xl font-semibold mb-3">Calendar-Based Monthly View</h4>
-        <p class="text-gray-600">
-          Visually organized monthly layout allowing users to switch between months
-          and instantly view daily records.
+      <div class="bg-card rounded-xl shadow p-6 hover:shadow-xl transition fade-in">
+        <h4 class="text-xl font-semibold mb-3 text-gray-100">
+          Calendar-Based Monthly View
+        </h4>
+        <p class="text-muted">
+          Structured monthly layout allowing quick navigation
+          and instant visibility of daily records.
         </p>
       </div>
 
-      <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition fade-in">
-        <h4 class="text-xl font-semibold mb-3">Consumption Summary Cards</h4>
-        <p class="text-gray-600">
-          Highlight cards showing total milk consumed, total cost, and average usage
-          for the selected period.
+      <div class="bg-card rounded-xl shadow p-6 hover:shadow-xl transition fade-in">
+        <h4 class="text-xl font-semibold mb-3 text-gray-100">
+          Consumption Summary Cards
+        </h4>
+        <p class="text-muted">
+          Highlighted metrics for total consumption, cost,
+          and average usage with visual hierarchy.
         </p>
       </div>
 
-      <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition fade-in">
-        <h4 class="text-xl font-semibold mb-3">Responsive Design</h4>
-        <p class="text-gray-600">
-          Fully responsive UI optimized for mobile, tablet, and desktop screens,
-          ensuring consistent experience across devices.
+      <div class="bg-card rounded-xl shadow p-6 hover:shadow-xl transition fade-in">
+        <h4 class="text-xl font-semibold mb-3 text-gray-100">
+          Responsive Design
+        </h4>
+        <p class="text-muted">
+          Optimized layouts for mobile, tablet, and desktop
+          without sacrificing usability.
         </p>
       </div>
 
-      <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition fade-in">
-        <h4 class="text-xl font-semibold mb-3">Interactive Charts & Visuals</h4>
-        <p class="text-gray-600">
-          Graphical representation of milk consumption trends using clean,
-          readable charts for better insights.
+      <div class="bg-card rounded-xl shadow p-6 hover:shadow-xl transition fade-in">
+        <h4 class="text-xl font-semibold mb-3 text-gray-100">
+          Interactive Charts & Visuals
+        </h4>
+        <p class="text-muted">
+          Consumption trends displayed through clean,
+          readable, and visually balanced charts.
         </p>
       </div>
 
-      <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition fade-in">
-        <h4 class="text-xl font-semibold mb-3">Real-Time UI Updates</h4>
-        <p class="text-gray-600">
-          Instant visual updates when data changes, providing immediate feedback
-          without page reloads.
+      <div class="bg-card rounded-xl shadow p-6 hover:shadow-xl transition fade-in">
+        <h4 class="text-xl font-semibold mb-3 text-gray-100">
+          Real-Time UI Feedback
+        </h4>
+        <p class="text-muted">
+          Immediate visual updates reflecting data changes
+          without disrupting user flow.
         </p>
       </div>
 
-      <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition fade-in">
-        <h4 class="text-xl font-semibold mb-3">Error & Empty State Handling</h4>
-        <p class="text-gray-600">
-          Informative messages and placeholders when no data is available or
-          when inputs are invalid.
+      <div class="bg-card rounded-xl shadow p-6 hover:shadow-xl transition fade-in">
+        <h4 class="text-xl font-semibold mb-3 text-gray-100">
+          Error & Empty States
+        </h4>
+        <p class="text-muted">
+          Clear messaging and placeholders to guide users
+          when data is missing or invalid.
         </p>
       </div>
 
-      <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition fade-in">
-        <h4 class="text-xl font-semibold mb-3">Clean Navigation Flow</h4>
-        <p class="text-gray-600">
-          Clear navigation between dashboard sections such as daily entry,
+      <div class="bg-card rounded-xl shadow p-6 hover:shadow-xl transition fade-in">
+        <h4 class="text-xl font-semibold mb-3 text-gray-100">
+          Clean Navigation Flow
+        </h4>
+        <p class="text-muted">
+          Logical movement between daily entries,
           monthly history, and summaries.
         </p>
       </div>
 
-      <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition fade-in">
-        <h4 class="text-xl font-semibold mb-3">Modern UI & Visual Consistency</h4>
-        <p class="text-gray-600">
-          Consistent spacing, typography, colors, and icons for a professional
-          and polished look.
+      <div class="bg-card rounded-xl shadow p-6 hover:shadow-xl transition fade-in">
+        <h4 class="text-xl font-semibold mb-3 text-gray-100">
+          Visual Consistency
+        </h4>
+        <p class="text-muted">
+          Consistent spacing, typography, and color usage
+          for a polished and professional experience.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Dashboard Preview Section -->
-  <section id="dashboard" class="bg-white py-16">
+  <!-- Dashboard -->
+  <section id="dashboard" class="bg-card py-16">
     <div class="max-w-7xl mx-auto px-6 text-center fade-in">
-      <h3 class="text-3xl font-bold mb-6">Dashboard Experience</h3>
-      <p class="text-gray-600 max-w-3xl mx-auto">
-        The dashboard acts as the central hub where users can instantly view
-        consumption data, switch months, and understand trends through clear
-        visual hierarchy and intuitive layout.
+      <h3 class="text-3xl font-bold mb-6 text-gray-100">
+        Dashboard Experience
+      </h3>
+      <p class="text-muted max-w-3xl mx-auto">
+        A centralized view that prioritizes clarity,
+        speed, and insight through strong visual structure
+        and intuitive layout.
       </p>
     </div>
   </section>
 
   <!-- UI Highlights -->
   <section id="ui" class="max-w-7xl mx-auto px-6 py-16">
-    <h3 class="text-3xl font-bold mb-12 text-center">UI Highlights</h3>
-    <ul class="max-w-3xl mx-auto space-y-4 text-gray-700 text-lg fade-in">
-      <li>• Smooth hover effects and subtle animations for better interaction feedback</li>
-      <li>• Minimalist design focused on readability and usability</li>
-      <li>• Accessible color contrast and clear typography</li>
-      <li>• Logical grouping of data for quick understanding</li>
-      <li>• Fast-loading and lightweight frontend structure</li>
+    <h3 class="text-3xl font-bold mb-12 text-center text-gray-100">
+      UI Highlights
+    </h3>
+    <ul class="max-w-3xl mx-auto space-y-4 text-muted text-lg fade-in">
+      <li>• Subtle animations for natural interaction feedback</li>
+      <li>• Dark theme optimized for long viewing sessions</li>
+      <li>• Clear typography with accessible contrast</li>
+      <li>• Logical data grouping for faster comprehension</li>
+      <li>• Lightweight, fast-loading frontend structure</li>
     </ul>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 py-8">
+  <footer class="bg-black text-muted py-8">
     <div class="max-w-7xl mx-auto px-6 text-center text-sm">
       © 2026 Milk Tracker — All rights reserved.
     </div>
   </footer>
 
-  <!-- Optional JS for small interaction -->
+  <!-- Scroll Animation -->
   <script>
-    // Simple fade-in on scroll
     const elements = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100');
+          entry.target.style.opacity = 1;
         }
       });
     }, { threshold: 0.1 });
